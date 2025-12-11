@@ -16,23 +16,31 @@ export default function Hero() {
       <p className="text-white/60 mt-4 max-w-xl">
         I build modern, animated, and responsive web experiences using cutting-edge technologies.
       </p>
-      <div className="flex gap-4 mt-6">
-        <a href="#projects" className="bg-purple-600 px-6 py-2 rounded text-white">See My Work</a>
-        <a href="#contact" className="border border-purple-600 px-6 py-2 rounded text-white">Contact Me</a>
+
+      <div className="flex flex-col sm:flex-row gap-4 mt-6">
+        <a 
+          href="#projects"
+          className="swipe-btn btn-primary"
+        >
+          See My Work
+        </a>
+        
+        <button 
+          className="swipe-btn btn-secondary"
+        >
+          Contact Me
+        </button>
       </div>
 
-      {/* Orbiting tech icons */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        {techStack.map((tech, i) => (
-          <div key={tech.name} className="absolute animate-orbit" style={{ top: `${i * 5}%`, left: `${i * 3}%` }}>
-            <div className="w-6 h-6 bg-purple-600 rounded flex items-center justify-center text-xs">
-              {tech.name.slice(0, 2)}
-            </div>
-          </div>
-        ))}
-      </div> */}
-
-
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo" />
+            <feBlend in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+        </defs>
+      </svg>
     </section>
   )
 }

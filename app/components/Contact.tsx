@@ -6,10 +6,11 @@ export default function Contact() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [status, setStatus] = useState('')
+  const [buttonState, setButtonState] = useState('idle') // idle, loading, success
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus('Sending...')
+    setButtonState('loading')
 
     const res = await fetch('/api/contact', {
       method: 'POST',
@@ -19,14 +20,20 @@ export default function Contact() {
 
     const data = await res.json()
     if (res.ok) {
-      toast.success('Message sent successfully!')
-      setEmail('')
-      setMessage('')
-      setStatus('')
+      setButtonState('success')
+      setTimeout(() => {
+        toast.success('Message sent successfully!')
+        setEmail('')
+        setMessage('')
+        setButtonState('idle')
+      }, 3000)
     } else {
-      toast.error(data.message || 'Failed to send message')
+      setButtonState('error')
+      setTimeout(() => {
+        toast.error(data.message || 'Failed to send message')
+        setButtonState('idle')
+      }, 3000)
     }
-    setStatus('')
   }
 
   return (
@@ -48,8 +55,22 @@ export default function Contact() {
           className="w-full p-3 rounded bg-gray-800 text-white h-32"
           required
         />
-        <button type="submit" className="bg-purple-600 px-6 py-2 rounded text-white">Send Message</button>
-        {status && <p className="text-white/60 mt-2">{status}</p>}
+        <button 
+          type={buttonState === 'error' ? 'button' : 'submit'}
+          className={`animated-submit-btn bg-purple-600 px-6 py-2 rounded-tl-2xl rounded-br-2xl cursor-pointer text-white relative overflow-hidden ${buttonState}`}
+          disabled={buttonState === 'loading'}
+          onClick={buttonState === 'error' ? () => setButtonState('idle') : undefined}
+        >
+          <span className="btn-text">Send Me A Message</span>
+          <div className="progress-bar"></div>
+          <svg className="check-icon" viewBox="0 0 52 52">
+            <path className="check" fill="none" d="m14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+          <svg className="error-icon" viewBox="0 0 52 52">
+            <path className="error-x" fill="none" d="m16 16 20 20 m0-20-20 20"/>
+          </svg>
+        </button>
+
       </form>
       <Toaster position="bottom-center" theme="dark" />
     </section>
