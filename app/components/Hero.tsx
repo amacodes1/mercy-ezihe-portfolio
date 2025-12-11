@@ -22,7 +22,7 @@ export default function Hero() {
       </div>
 
       {/* Orbiting tech icons */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         {techStack.map((tech, i) => (
           <div key={tech.name} className="absolute animate-orbit" style={{ top: `${i * 5}%`, left: `${i * 3}%` }}>
             <div className="w-6 h-6 bg-purple-600 rounded flex items-center justify-center text-xs">
@@ -30,7 +30,7 @@ export default function Hero() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
 
 
     </section>
