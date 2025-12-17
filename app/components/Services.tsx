@@ -7,7 +7,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 px-10 bg-black text-white text-center">
+    <section id="services" className="py-6 md:py-20 px-3 md:px-10 bg-black text-white text-center">
       <h2 className="text-3xl font-bold mb-4">Services</h2>
       <p className="text-white/60 mb-8">How I Help You Succeed</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
