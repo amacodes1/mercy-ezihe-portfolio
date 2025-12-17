@@ -29,7 +29,7 @@ const itemVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-linear-to-br from-gray-900 via-black to-gray-800 text-white text-center overflow-hidden">
+    <section id="skills" className="py-20 px-10 bg-linear-to-br from-gray-900 via-black to-gray-800 text-white text-center overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}

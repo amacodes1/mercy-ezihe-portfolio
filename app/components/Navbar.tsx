@@ -6,7 +6,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full bg-black text-white flex justify-between items-center px-6 py-4 z-50">
+    <nav className="fixed top-0 w-full bg-black text-white flex justify-between items-center px-14 py-4 z-50">
       <h1 className="text-xl font-bold">Mercy</h1>
       
       {/* Desktop Menu */}
@@ -20,7 +20,7 @@ export default function Navbar() {
       </ul>
 
       {/* Mobile Hamburger */}
-      <button 
+      <button title='menu' 
         className="md:hidden cursor-pointer flex flex-col gap-1"
         onClick={() => setIsOpen(!isOpen)}
       >
